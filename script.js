@@ -98,7 +98,15 @@ function makeCardByTemplate(item) {
   itemCard.querySelector('p').textContent = item.description;
   itemCard.querySelector('img').src = item.img;
   itemCard.querySelector('span').textContent = `${item.price} р.`;
-  itemCard.querySelector('.tags').textContent = item.tags.join(', ');
+
+  const tagsContainer = itemCard.querySelector('.tags');
+
+  item.tags.forEach(tag => {
+    const span = document.createElement('span');
+    span.classList.add('tag');
+    span.textContent = tag;
+    tagsContainer.append(span)
+  });
 
   return itemCard;
 }
